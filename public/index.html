@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나만의 비밀 통로</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center h-screen">
+    <div class="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-xl">
+        <h1 class="text-3xl font-bold mb-6 text-center text-blue-400">Web Proxy</h1>
+        
+        <div class="space-y-4">
+            <input type="text" id="urlInput" placeholder="https://www.google.com" 
+                class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500 text-white">
+            
+            <button onclick="go()" 
+                class="w-full bg-blue-600 hover:bg-blue-500 p-3 rounded font-bold transition duration-200">
+                접속하기
+            </button>
+        </div>
+        
+        <p class="mt-6 text-sm text-gray-400 text-center">
+            입력한 주소로 보안 접속을 시작합니다.
+        </p>
+    </div>
+
+    <script>
+        function go() {
+            const url = document.getElementById('urlInput').value;
+            if (url) {
+                // 나중에 만들 /proxy 경로로 주소를 보냅니다.
+                window.location.href = `/proxy?url=${encodeURIComponent(url)}`;
+            }
+        }
+    </script>
+</body>
+</html>
